@@ -1,0 +1,21 @@
+name: publicar_git_registry
+on: [push]
+jobs:
+  publish-hello-docker-image:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v2
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v1
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build the hello-docker Docker image
+        run: |
+         docker build . -t ghcr.io/yyucra/hello-docker-gcr:latest
+         docker run ghcr.io/yyucra/hello-docker-gcr:latest
+         docker push ghcr.io/yyucra/hello-docker-gcr:latest
