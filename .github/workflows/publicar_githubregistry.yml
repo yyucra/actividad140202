@@ -16,6 +16,6 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
       - name: Build the hello-docker Docker image
         run: |
-         docker build . -t ghcr.io/yyucra/hello-docker-gcr:latest
-         docker run ghcr.io/yyucra/hello-docker-gcr:latest
-         docker push ghcr.io/yyucra/hello-docker-gcr:latest
+         docker build . -t ghcr.io/yyucra/hello-docker-utp:latest
+         docker run ghcr.io/yyucra/hello-docker-utp:latest
+         docker push ghcr.io/yyucra/hello-docker-utp:latest
