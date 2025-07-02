@@ -1,5 +1,7 @@
 name: publicar_git_registry
-on: [push]
+on:
+    pull_request: 
+      branches: ["main"] 
 jobs:
   publish-hello-docker-image:
     runs-on: ubuntu-latest
